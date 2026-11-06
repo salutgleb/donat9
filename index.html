@@ -126,7 +126,7 @@ async function onSubmit(event) {
       return;
     }
     await rememberKey(key, password, gate);
-    say('Открываю атлас…');
+    say('Открываю сайт…');
     await enter();
   } catch (error) {
     say('Не получилось открыть: ' + error.message);
@@ -136,7 +136,7 @@ async function onSubmit(event) {
 
 async function start() {
   if (!('serviceWorker' in navigator) || !window.crypto || !crypto.subtle || !window.indexedDB) {
-    say('Этот браузер не умеет открывать атлас. Открой ссылку в Safari или Chrome.');
+    say('Этот браузер не умеет открывать сайт. Открой ссылку в Safari или Chrome.');
     $('submit').disabled = true;
     return;
   }
@@ -144,7 +144,7 @@ async function start() {
   try {
     const stored = await storeRequest('readonly', (store) => store.get('key'));
     if (stored) {
-      say('Открываю атлас…');
+      say('Открываю сайт…');
       await enter();
     }
   } catch (error) {
